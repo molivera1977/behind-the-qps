@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Behind the QPS</title>
+<link rel="stylesheet" href="style.css?v=btq1" />
+</head>
+<body>
+<!-- BEHIND THE QPS (Mr. Olivera 10/23: "Shouldn't we do a Behind the QPS similar to the Behind the LAB to fully explain how
+     each child's plan came to be and what they are being given"): how the QPS Literacy Hub works, stop by stop, and —
+     behind the teacher PIN — where each child started, where they are now, and what comes next. No student names are
+     written in this site: they come from the hub's own track list at run time, behind the PIN, shown as "First L."
+     until the teacher switches on full names. -->
+<header class="top">
+  <div class="wrap">
+    <h1>📗 Behind the QPS</h1>
+    <p class="sub">How Mr. Olivera's QPS Literacy Hub works — every phonics stop, the reading path, and how each child's plan is set.</p>
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="overview" id="tab-overview">The QPS in one page</button>
+      <button class="tab" role="tab" data-view="map" id="tab-map">The Path</button>
+      <button class="tab" role="tab" data-view="who" id="tab-who">Who gets what</button>
+      <button class="tab" role="tab" data-view="students" id="tab-students">🔒 My Students</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- THE QPS IN ONE PAGE -->
+  <section id="view-overview" class="view" hidden>
+    <div class="grid2">
+      <article class="card">
+        <h2>What the QPS hub is</h2>
+        <p>The district checks phonics with the <b>Wonders Quick Phonics Screener</b> (QPS): a child reads one section at a time, from letter sounds up to prefixes and suffixes, and the screener stops at the first section they have not mastered.</p>
+        <p>Mr. Olivera's <b>QPS Literacy Hub</b> turns every section into a practice <b>stop</b> on the Chromebook, numbered like the screener. Each child practices the section where the screener stopped them, between the official screenings.</p>
+        <button class="more" data-explain="why-qps">About the screener</button>
+      </article>
+      <article class="card">
+        <h2>Who it is for</h2>
+        <p>Every student has a plan. A child the screener stopped at a section practices <b>that stop</b>. A child who passed every section gets the <b>reading path</b> instead. Students practice on their own while Mr. Olivera teaches a small group at his table.</p>
+        <p class="stat-row" id="live-counts" aria-live="polite">Loading how many students are on each stop…</p>
+      </article>
+    </div>
+
+    <article class="card">
+      <h2>How every phonics stop works</h2>
+      <p>Every stop has the same five parts. Click a part to see what happens in it.</p>
+      <ol class="steps" id="stop-steps">
+        <li><button data-explain="part-learn"><span class="si">📖</span><b>Learn</b><small>the pattern, heard to the end</small></button></li>
+        <li><button data-explain="part-practice"><span class="si">🧩</span><b>Practice steps</b><small>one job per screen</small></button></li>
+        <li><button data-explain="part-check"><span class="si">✅</span><b>Check</b><small>10 items, no hints, 80%</small></button></li>
+        <li><button data-explain="part-twice"><span class="si">✅✅</span><b>Pass it twice</b><small>the whole stop again</small></button></li>
+        <li><button data-explain="part-test"><span class="si">📝</span><b>Mr. Olivera's test</b><small>the screener's own words</small></button></li>
+      </ol>
+    </article>
+
+    <article class="card reading-card">
+      <h2>The reading path — for students who passed every section</h2>
+      <p>A child who passed every section of the screener does not need a phonics stop. They get three reading courses, <b>one at a time, in this order</b>. Each course has four levels; a level is passed by passing its Check twice.</p>
+      <ol class="path-steps" id="course-steps"></ol>
+      <button class="more" data-explain="readpath">How the reading path works</button>
+    </article>
+
+    <article class="card test-card">
+      <h2>Is this teaching to the test?</h2>
+      <p>No. The hub teaches the <b>skill</b> each screener section measures, never the screener's own words. <span id="test-words"></span></p>
+      <ul class="test-points">
+        <li><b>The test words are never practiced.</b> They are used only once, by Mr. Olivera, as his test — so passing it shows the skill works on words the child has never practiced.</li>
+        <li><b>The practice goes past the screener.</b> The screener has a child read words aloud; the hub also has them hear and sort sounds, change one sound to make a new word, build words, and spell.</li>
+        <li><b>The screener's sections are the phonics standards.</b> Each stop matches a Common Core Foundational Skills standard, listed on its page.</li>
+      </ul>
+      <button class="more" data-explain="test">The full answer</button>
+    </article>
+
+    <div class="grid3">
+      <article class="card"><h3>Moving on by itself</h3><p>Two passed Checks move a child to the <b>next stop at once</b>. Mr. Olivera's dashboard then lists the stop he still has to test.</p><button class="more" data-explain="moving">More</button></article>
+      <article class="card"><h3>Made-up words</h3><p>Like the screener, the site uses <b>made-up words</b> (zade, gok), so a child must sound them out. None of them is a screener test word.</p><button class="more" data-explain="madeup">Why</button></article>
+      <article class="card"><h3>Mr. Olivera's voice</h3><p>The letter and chunk sounds are <b>his own recordings</b>. Every word and answer choice the site says was checked by his ear.</p><button class="more" data-explain="voice">More</button></article>
+      <article class="card"><h3>Read aloud</h3><p>Directions and lessons are read aloud and must be <b>heard to the end</b> before a step opens. Maze stories are silent, like the real test.</p><button class="more" data-explain="aloud">Why</button></article>
+      <article class="card"><h3>Records</h3><p>Every Check is saved to the results sheet. Mr. Olivera's dashboard shows each child's stop, passes, misses and who is waiting for his test.</p><button class="more" data-explain="records">More</button></article>
+      <article class="card"><h3>Privacy</h3><p>No student's name is written in this site. Where each child starts is read from the hub's track list, and names show only after the teacher PIN.</p><button class="more" data-explain="privacy">More</button></article>
+    </div>
+  </section>
+
+  <!-- THE PATH -->
+  <section id="view-map" class="view" hidden>
+    <p class="lead">All <span id="n-stops">the</span> phonics stops in the screener's order, and the reading path after them. <b>Click any stop or course</b> to see what it reviews, its standard and level, real practice words, and how it is passed.</p>
+    <div class="legend"><span class="area-sounds">Sounds and short words</span><span class="area-vowels">Vowel patterns</span><span class="area-big">Big words</span><span class="area-reading">Reading path</span></div>
+    <div id="map"></div>
+  </section>
+
+  <!-- WHO GETS WHAT -->
+  <section id="view-who" class="view" hidden>
+    <p class="lead">How a child's plan is set, how it moves, and when it is redone — the rules, and where the class started. (Each child's own screener results are kept on the teacher's computer, not on the web.)</p>
+    <div id="who"></div>
+  </section>
+
+  <!-- MY STUDENTS (teacher PIN) -->
+  <section id="view-students" class="view" hidden>
+    <div id="pin-box" class="card pin-box">
+      <h2>🔒 My Students</h2>
+      <p>For Mr. Olivera: where each child started, where they are now, and what comes next. Enter the teacher PIN.</p>
+      <form id="pin-form" autocomplete="off">
+        <input id="pin-input" type="password" inputmode="numeric" maxlength="8" aria-label="Teacher PIN" placeholder="PIN" />
+        <button type="submit" class="btn">Open</button>
+        <span id="pin-msg" class="pin-msg" role="alert"></span>
+      </form>
+    </div>
+    <div id="students" hidden>
+      <div class="students-bar">
+        <label class="switch"><input type="checkbox" id="full-names" /> 👁 Show full names</label>
+        <span id="students-status" class="muted" aria-live="polite"></span>
+      </div>
+      <div id="roster"></div>
+    </div>
+  </section>
+</main>
+
+<!-- the explanation drawer: opens on a click anywhere on the site -->
+<div id="drawer" class="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+  <div class="drawer-panel">
+    <button class="drawer-close" id="drawer-close" aria-label="Close">✕</button>
+    <div id="drawer-body"></div>
+  </div>
+</div>
+
+<footer class="wrap foot"><p>Built from the QPS hub's own files. No student names are in this site's code.</p></footer>
+
+<script src="data/catalog.js?v=btq1"></script>
+<script src="data/explain.js?v=btq1"></script>
+<script src="path.js?v=btq1"></script>
+<script src="app.js?v=btq1"></script>
+</body>
+</html>
